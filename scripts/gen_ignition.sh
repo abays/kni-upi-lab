@@ -102,7 +102,7 @@ patch_manifest() {
 
     if [[ $standalone =~ true ]]; then
         cp_manifest "$PROJECT_DIR/cluster/standalone/openshift" "$ocp_dir/openshift"
-        cp_manifest "$PROJECT_DIR/cluster/standalone/manifest" "$ocp_dir/manifest"
+        cp_manifest "$PROJECT_DIR/cluster/standalone/manifest" "$ocp_dir/manifests"
     fi
 
     cp_manifest "$PROJECT_DIR/cluster/openshift-patches" "$ocp_dir/openshift"
