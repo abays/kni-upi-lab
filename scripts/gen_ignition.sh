@@ -128,7 +128,8 @@ gen_manifests() {
     fi
 
     rm -rf "$out_dir"
-    mkdir -p "$out_dir"
+    mkdir -p "$out_dir/openshift"
+    mkdir -p "$out_dir/manifests"
     cp "$manifest_dir/install-config.yaml" "$out_dir"
 
     if ! "$REQUIREMENTS_DIR/openshift-install" --log-level warn --dir "$out_dir" create manifests >/dev/null; then
