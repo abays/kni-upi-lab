@@ -7,8 +7,6 @@
 </resource>
 <os>
 <type arch='x86_64' >hvm</type>
-<boot dev='hd'/>
-<boot dev='network'/>
 </os>
 <features>
 <acpi/>
@@ -28,6 +26,7 @@
 </pm>
 <devices>
 <disk type='file' device='disk'>
+<boot order='1'/>
 <driver name='qemu' type='qcow2'/>
 <source file='${bootstrap_img}'/>
 <backingStore/>
@@ -36,16 +35,17 @@
 <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
 </disk>
 <interface type='bridge'>
-<mac address='${bootstrap_mac_address}'/>
-<source bridge='${provisioning_bridge}'/>
+<mac address='52:54:00:82:68:3e'/>
+<source bridge='${baremetal_bridge}'/>
 <target dev='vnet0'/>
 <model type='rtl8139'/>
 <alias name='net0'/>
 <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
 </interface>
 <interface type='bridge'>
-<mac address='52:54:00:82:68:3e'/>
-<source bridge='${baremetal_bridge}'/>
+<boot order='2'/>
+<mac address='${bootstrap_mac_address}'/>
+<source bridge='${provisioning_bridge}'/>
 <target dev='vnet1'/>
 <model type='rtl8139'/>
 <alias name='net1'/>
